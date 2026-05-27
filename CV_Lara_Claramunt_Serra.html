@@ -1,0 +1,1516 @@
+<!DOCTYPE html>
+<html lang="ca" data-theme="light" data-lang="ca">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lara Claramunt Serra — CV</title>
+
+  <!-- ============================================================
+       FONTS — Google Fonts via preconnect (sin dependencias externas
+       de frameworks, solo tipografía)
+       ============================================================ -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ============================================================
+       DESIGN TOKENS — Edita aquí para cambiar colores y tipografía
+       ============================================================ */
+    :root {
+      --clr-bg:          #F7F6F3;
+      --clr-surface:     #FFFFFF;
+      --clr-surface-2:   #F0EEE9;
+      --clr-border:      #E4E1DA;
+      --clr-text:        #1A1816;
+      --clr-text-2:      #5C5750;
+      --clr-text-3:      #9C9488;
+      --clr-accent:      #8B2635;      /* granate elegante */
+      --clr-accent-2:    #C4455A;
+      --clr-accent-soft: #F5E8EA;
+      --clr-tag-bg:      #EDEBE6;
+      --clr-tag-text:    #3D3A36;
+      --clr-timeline:    #D4CFC8;
+
+      --ff-display:      'DM Serif Display', Georgia, serif;
+      --ff-body:         'DM Sans', system-ui, sans-serif;
+
+      --radius-sm:   6px;
+      --radius-md:   12px;
+      --radius-lg:   20px;
+      --radius-full: 9999px;
+
+      --shadow-sm:  0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+      --shadow-md:  0 4px 16px rgba(0,0,0,0.08), 0 1px 4px rgba(0,0,0,0.04);
+      --shadow-lg:  0 12px 40px rgba(0,0,0,0.10), 0 2px 8px rgba(0,0,0,0.05);
+
+      --transition: 0.22s cubic-bezier(0.4,0,0.2,1);
+      --max-width:  780px;
+    }
+
+    /* Dark mode tokens */
+    [data-theme="dark"] {
+      --clr-bg:          #131210;
+      --clr-surface:     #1E1C19;
+      --clr-surface-2:   #272420;
+      --clr-border:      #2F2C28;
+      --clr-text:        #F0EDE8;
+      --clr-text-2:      #A8A299;
+      --clr-text-3:      #6B6560;
+      --clr-accent:      #E05570;
+      --clr-accent-2:    #F07A8A;
+      --clr-accent-soft: #3A1820;
+      --clr-tag-bg:      #2A2720;
+      --clr-tag-text:    #D0CAC0;
+      --clr-timeline:    #3A3630;
+      --shadow-sm:  0 1px 3px rgba(0,0,0,0.3);
+      --shadow-md:  0 4px 16px rgba(0,0,0,0.4);
+      --shadow-lg:  0 12px 40px rgba(0,0,0,0.5);
+    }
+
+    /* ============================================================
+       RESET & BASE
+       ============================================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--ff-body);
+      background: var(--clr-bg);
+      color: var(--clr-text);
+      line-height: 1.65;
+      font-size: 15px;
+      -webkit-font-smoothing: antialiased;
+      transition: background var(--transition), color var(--transition);
+    }
+
+    a { color: var(--clr-accent); text-decoration: none; transition: color var(--transition); }
+    a:hover { color: var(--clr-accent-2); }
+
+    /* ============================================================
+       TOOLBAR — controles flotantes (idioma + dark mode + PDF)
+       ============================================================ */
+    .toolbar {
+      position: fixed;
+      top: 18px;
+      right: 18px;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--clr-surface);
+      border: 1px solid var(--clr-border);
+      border-radius: var(--radius-full);
+      padding: 6px 10px;
+      box-shadow: var(--shadow-md);
+      transition: background var(--transition), border-color var(--transition);
+    }
+
+    .toolbar__separator {
+      width: 1px;
+      height: 20px;
+      background: var(--clr-border);
+      margin: 0 2px;
+    }
+
+    /* Botones de idioma */
+    .lang-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: var(--ff-body);
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      color: var(--clr-text-3);
+      padding: 4px 8px;
+      border-radius: var(--radius-full);
+      transition: background var(--transition), color var(--transition);
+    }
+    .lang-btn:hover { background: var(--clr-tag-bg); color: var(--clr-text); }
+    .lang-btn.active {
+      background: var(--clr-accent);
+      color: #fff;
+    }
+
+    /* Dark mode toggle */
+    .dark-toggle {
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px 8px;
+      border-radius: var(--radius-full);
+      color: var(--clr-text-2);
+      display: flex;
+      align-items: center;
+      transition: background var(--transition), color var(--transition);
+    }
+    .dark-toggle:hover { background: var(--clr-tag-bg); color: var(--clr-text); }
+    .dark-toggle svg { width: 16px; height: 16px; }
+
+    /* Botón PDF */
+    .pdf-btn {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--clr-accent);
+      border: none;
+      border-radius: var(--radius-full);
+      color: #fff;
+      cursor: pointer;
+      font-family: var(--ff-body);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      padding: 5px 12px;
+      transition: background var(--transition), transform 0.15s;
+    }
+    .pdf-btn:hover { background: var(--clr-accent-2); transform: translateY(-1px); }
+    .pdf-btn:active { transform: translateY(0); }
+    .pdf-btn svg { width: 14px; height: 14px; }
+
+    /* ============================================================
+       LAYOUT PRINCIPAL
+       ============================================================ */
+    .page {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 80px 24px 60px;
+    }
+
+    /* ============================================================
+       HERO / HEADER
+       ============================================================ */
+    .hero {
+      background: var(--clr-surface);
+      border: 1px solid var(--clr-border);
+      border-radius: var(--radius-lg);
+      padding: 44px 48px 40px;
+      box-shadow: var(--shadow-md);
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 32px;
+      align-items: start;
+      margin-bottom: 24px;
+      animation: fadeUp 0.5s ease both;
+    }
+
+    .hero__name {
+      font-family: var(--ff-display);
+      font-size: clamp(32px, 5vw, 46px);
+      font-weight: 400;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: var(--clr-text);
+      margin-bottom: 6px;
+    }
+
+    .hero__title {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--clr-accent);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .hero__meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px 20px;
+    }
+
+    .hero__meta-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      color: var(--clr-text-2);
+      transition: color var(--transition);
+    }
+    .hero__meta-item:hover { color: var(--clr-accent); }
+    .hero__meta-item svg { width: 14px; height: 14px; flex-shrink: 0; opacity: 0.7; }
+
+    .hero__avatar {
+      width: 88px;
+      height: 88px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--clr-accent-soft), var(--clr-tag-bg));
+      border: 2px solid var(--clr-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--ff-display);
+      font-size: 28px;
+      color: var(--clr-accent);
+      flex-shrink: 0;
+      box-shadow: var(--shadow-sm);
+    }
+
+    /* ============================================================
+       SECCIÓN GENÉRICA
+       ============================================================ */
+    .section {
+      background: var(--clr-surface);
+      border: 1px solid var(--clr-border);
+      border-radius: var(--radius-lg);
+      padding: 36px 48px;
+      margin-bottom: 16px;
+      box-shadow: var(--shadow-sm);
+      animation: fadeUp 0.5s ease both;
+      transition: box-shadow var(--transition);
+    }
+    .section:hover { box-shadow: var(--shadow-md); }
+
+    .section__label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--clr-accent);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .section__label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--clr-border);
+    }
+
+    .section__label svg { width: 14px; height: 14px; flex-shrink: 0; }
+
+    /* ============================================================
+       SOBRE MÍ
+       ============================================================ */
+    .about__text {
+      color: var(--clr-text-2);
+      font-size: 14.5px;
+      line-height: 1.75;
+      max-width: 640px;
+    }
+
+    /* ============================================================
+       SKILLS
+       ============================================================ */
+    .skills__group {
+      margin-bottom: 20px;
+    }
+    .skills__group:last-child { margin-bottom: 0; }
+
+    .skills__group-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--clr-text-3);
+      margin-bottom: 10px;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: var(--clr-tag-bg);
+      color: var(--clr-tag-text);
+      border-radius: var(--radius-full);
+      padding: 5px 12px;
+      font-size: 12.5px;
+      font-weight: 500;
+      border: 1px solid var(--clr-border);
+      transition: background var(--transition), transform 0.15s, box-shadow 0.15s;
+      cursor: default;
+    }
+    .tag:hover {
+      background: var(--clr-accent-soft);
+      color: var(--clr-accent);
+      border-color: var(--clr-accent);
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-sm);
+    }
+    .tag.tag--accent {
+      background: var(--clr-accent-soft);
+      color: var(--clr-accent);
+      border-color: transparent;
+    }
+
+    /* ============================================================
+       EXPERIENCIA — TIMELINE
+       ============================================================ */
+    .timeline { position: relative; }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 7px;
+      top: 8px;
+      bottom: 0;
+      width: 1px;
+      background: var(--clr-timeline);
+    }
+
+    .timeline__item {
+      position: relative;
+      padding-left: 32px;
+      margin-bottom: 36px;
+    }
+    .timeline__item:last-child { margin-bottom: 0; }
+
+    .timeline__dot {
+      position: absolute;
+      left: 0;
+      top: 8px;
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      background: var(--clr-surface);
+      border: 2px solid var(--clr-accent);
+      box-shadow: 0 0 0 3px var(--clr-accent-soft);
+      transition: background var(--transition);
+    }
+    .timeline__item:hover .timeline__dot {
+      background: var(--clr-accent);
+    }
+
+    .timeline__header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 4px;
+      margin-bottom: 4px;
+    }
+
+    .timeline__role {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--clr-text);
+      line-height: 1.3;
+    }
+
+    .timeline__date {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--clr-text-3);
+      white-space: nowrap;
+      background: var(--clr-tag-bg);
+      padding: 2px 8px;
+      border-radius: var(--radius-full);
+      border: 1px solid var(--clr-border);
+    }
+    
+    .timeline__company {
+      font-size: 13px;
+      color: var(--clr-accent);
+      font-weight: 500;
+      margin-bottom: 10px;
+    }
+
+    .timeline__description {
+      list-style: none;
+      font-size: 13px;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      margin-bottom: 10px;
+    }
+    
+    .timeline__bullets {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .timeline__bullets li {
+      font-size: 13.5px;
+      color: var(--clr-text-2);
+      line-height: 1.6;
+      padding-left: 14px;
+      position: relative;
+    }
+    .timeline__bullets li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--clr-accent);
+      font-size: 11px;
+      top: 3px;
+    }
+
+    /* ============================================================
+       EDUCACIÓN
+       ============================================================ */
+    .edu-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .edu-item {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 16px;
+      align-items: start;
+    }
+
+    .edu-item__icon {
+      width: 40px;
+      height: 40px;
+      border-radius: var(--radius-md);
+      background: var(--clr-accent-soft);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: var(--clr-accent);
+    }
+    .edu-item__icon svg { width: 18px; height: 18px; }
+
+    .edu-item__school {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--clr-text);
+    }
+    .edu-item__degree {
+      font-size: 13.5px;
+      color: var(--clr-text-2);
+      margin: 2px 0;
+    }
+    .edu-item__date {
+      font-size: 12px;
+      color: var(--clr-text-3);
+    }
+
+    /* ============================================================
+       PROYECTOS
+       ============================================================ */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 14px;
+    }
+
+    .project-card {
+      background: var(--clr-surface-2);
+      border: 1px solid var(--clr-border);
+      border-radius: var(--radius-md);
+      padding: 20px;
+      transition: transform 0.18s, box-shadow 0.18s, border-color 0.18s;
+      cursor: default;
+    }
+    .project-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--clr-accent);
+    }
+
+    .project-card__title {
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--clr-text);
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .project-card__title svg { width: 13px; height: 13px; color: var(--clr-accent); flex-shrink: 0; }
+
+    .project-card__tech {
+      font-size: 11.5px;
+      color: var(--clr-accent);
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .project-card__desc {
+      font-size: 12.5px;
+      color: var(--clr-text-2);
+      line-height: 1.6;
+    }
+
+    /* ============================================================
+       IDIOMAS
+       ============================================================ */
+    .langs-grid {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .lang-card {
+      flex: 1;
+      min-width: 140px;
+      background: var(--clr-surface-2);
+      border: 1px solid var(--clr-border);
+      border-radius: var(--radius-md);
+      padding: 16px 20px;
+      transition: border-color var(--transition);
+    }
+    .lang-card:hover { border-color: var(--clr-accent); }
+
+    .lang-card__name {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--clr-text);
+      margin-bottom: 4px;
+    }
+    .lang-card__level {
+      font-size: 12px;
+      color: var(--clr-text-3);
+    }
+    .lang-card__bar {
+      margin-top: 10px;
+      height: 3px;
+      background: var(--clr-border);
+      border-radius: var(--radius-full);
+      overflow: hidden;
+    }
+    .lang-card__fill {
+      height: 100%;
+      background: var(--clr-accent);
+      border-radius: var(--radius-full);
+      transition: width 1s ease;
+    }
+
+    /* ============================================================
+       CERTIFICACIONES
+       ============================================================ */
+    .certs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 10px;
+    }
+
+    .cert-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 12px 14px;
+      background: var(--clr-surface-2);
+      border: 1px solid var(--clr-border);
+      border-radius: var(--radius-md);
+      transition: border-color var(--transition), transform 0.15s;
+    }
+    .cert-item:hover { border-color: var(--clr-accent); transform: translateY(-2px); }
+
+    .cert-item__dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--clr-accent);
+      flex-shrink: 0;
+      margin-top: 6px;
+    }
+
+    .cert-item__name {
+      font-size: 12.5px;
+      font-weight: 500;
+      color: var(--clr-text);
+      line-height: 1.4;
+    }
+    .cert-item__issuer {
+      font-size: 11.5px;
+      color: var(--clr-text-3);
+      margin-top: 2px;
+    }
+
+    /* ============================================================
+       FOOTER
+       ============================================================ */
+    .footer {
+      text-align: center;
+      padding: 32px 0 8px;
+      font-size: 12px;
+      color: var(--clr-text-3);
+      letter-spacing: 0.04em;
+    }
+
+    .footer__divider {
+      width: 40px;
+      height: 1px;
+      background: var(--clr-border);
+      margin: 0 auto 16px;
+    }
+
+    /* ============================================================
+       ANIMACIONES
+       ============================================================ */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .section:nth-child(1) { animation-delay: 0.05s; }
+    .section:nth-child(2) { animation-delay: 0.10s; }
+    .section:nth-child(3) { animation-delay: 0.15s; }
+    .section:nth-child(4) { animation-delay: 0.20s; }
+    .section:nth-child(5) { animation-delay: 0.25s; }
+    .section:nth-child(6) { animation-delay: 0.30s; }
+    .section:nth-child(7) { animation-delay: 0.35s; }
+
+    /* ============================================================
+       RESPONSIVE MÓVIL
+       ============================================================ */
+    @media (max-width: 600px) {
+      .page { padding: 72px 14px 40px; }
+      .hero { padding: 28px 24px; grid-template-columns: 1fr; }
+      .hero__avatar { display: none; }
+      .section { padding: 28px 24px; }
+      .toolbar { top: 10px; right: 10px; padding: 5px 8px; gap: 6px; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .certs-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ============================================================
+       PRINT / PDF — A4 optimizado
+       ============================================================ */
+       @media print {
+      /* Colores exactos */
+      * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+ 
+      /* Página A4 con márgenes cómodos */
+      @page { size: A4 portrait; margin: 12mm 15mm 14mm 15mm; }
+ 
+      /* Fuente base más pequeña para que todo quepa mejor */
+      body {
+        background: #fff !important;
+        font-size: 11.5px !important;
+        line-height: 1.55 !important;
+      }
+ 
+      /* Esconde la toolbar */
+      .toolbar { display: none !important; }
+ 
+      /* Elimina el padding de navegación */
+      .page { padding: 0 !important; max-width: 100% !important; }
+ 
+      /* Elimina sombras y reduce bordes */
+      .hero, .section {
+        box-shadow: none !important;
+        border-color: #E0DDD8 !important;
+        margin-bottom: 8px !important;
+      }
+ 
+      /* Hero más compacto */
+      .hero {
+        padding: 20px 24px !important;
+        border-radius: 10px !important;
+      }
+      .hero__name { font-size: 28px !important; margin-bottom: 3px !important; }
+      .hero__title { font-size: 10px !important; margin-bottom: 12px !important; }
+      .hero__meta { gap: 8px 14px !important; }
+      .hero__meta-item { font-size: 11px !important; }
+      .hero__avatar { width: 64px !important; height: 64px !important; font-size: 20px !important; }
+ 
+      /* Secciones más compactas */
+      .section {
+        padding: 16px 24px !important;
+        border-radius: 10px !important;
+      }
+      .section__label { font-size: 9px !important; margin-bottom: 12px !important; }
+ 
+      /* Sobre mi */
+      .about__text { font-size: 11.5px !important; line-height: 1.6 !important; }
+ 
+      /* Skills */
+      .tag { font-size: 10.5px !important; padding: 3px 9px !important; }
+      .skills__group { margin-bottom: 12px !important; }
+      .skills__group-label { font-size: 9px !important; margin-bottom: 7px !important; }
+      .tags { gap: 5px !important; }
+ 
+      /* Timeline — cada item no se parte entre páginas */
+      .timeline__item {
+        break-inside: avoid !important;
+        page-break-inside: avoid !important;
+        margin-bottom: 18px !important;
+      }
+      .timeline__role { font-size: 12.5px !important; }
+      .timeline__company { font-size: 11px !important; margin-bottom: 6px !important; }
+      .timeline__date { font-size: 10px !important; }
+      .timeline__bullets li { font-size: 11px !important; line-height: 1.5 !important; }
+      .timeline__narrative { font-size: 11px !important; line-height: 1.55 !important; margin-bottom: 8px !important; }
+ 
+      /* Educación */
+      .edu-item { gap: 10px !important; margin-bottom: 0 !important; }
+      .edu-grid { gap: 14px !important; }
+      .edu-item__icon { width: 32px !important; height: 32px !important; border-radius: 8px !important; }
+      .edu-item__school { font-size: 11.5px !important; }
+      .edu-item__degree { font-size: 11px !important; }
+      .edu-item__date { font-size: 10px !important; }
+      .edu-item__narrative { font-size: 11px !important; line-height: 1.5 !important; margin-top: 3px !important; }
+ 
+      /* Proyectos — grid de 2 columnas en print */
+      .projects-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 8px !important;
+      }
+      .project-card {
+        break-inside: avoid !important;
+        page-break-inside: avoid !important;
+        padding: 12px !important;
+      }
+      .project-card__title { font-size: 11.5px !important; }
+      .project-card__tech { font-size: 9.5px !important; }
+      .project-card__desc { font-size: 10.5px !important; }
+ 
+      /* Idiomas */
+      .lang-card { padding: 10px 14px !important; }
+      .lang-card__name { font-size: 12px !important; }
+      .lang-card__level { font-size: 10px !important; }
+ 
+      /* Certificaciones */
+      .certs-grid { gap: 6px !important; }
+      .cert-item { padding: 8px 10px !important; }
+      .cert-item__name { font-size: 10.5px !important; }
+      .cert-item__issuer { font-size: 9.5px !important; }
+ 
+      /* Secciones que NO deben partirse */
+      .section { break-inside: avoid !important; page-break-inside: avoid !important; }
+      /* Excepciones: experiencia y proyectos pueden tener saltos internos */
+      #section-experience, #section-projects, #section-certifications {
+        break-inside: auto !important;
+        page-break-inside: auto !important;
+      }
+ 
+      /* Footer */
+      .footer { padding: 12px 0 0 !important; font-size: 10px !important; }
+ 
+      a { color: #8B2635 !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================
+       TOOLBAR — barra de controles fija
+       ============================================================ -->
+  <div class="toolbar" role="toolbar" aria-label="Controles del CV">
+
+    <!-- Selectores de idioma -->
+    <button class="lang-btn active" data-lang="ca" onclick="setLang('ca')" title="Català">CA</button>
+    <button class="lang-btn" data-lang="es" onclick="setLang('es')" title="Español">ES</button>
+    <button class="lang-btn" data-lang="en" onclick="setLang('en')" title="English">EN</button>
+
+    <div class="toolbar__separator"></div>
+
+    <!-- Toggle dark mode -->
+    <button class="dark-toggle" onclick="toggleDark()" title="Cambiar modo oscuro/claro" aria-label="Modo oscuro">
+      <!-- Sol (modo claro) -->
+      <svg id="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
+        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+        <line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
+        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+      </svg>
+      <!-- Luna (modo oscuro) -->
+      <svg id="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+      </svg>
+    </button>
+
+    <div class="toolbar__separator"></div>
+
+    <!-- Botón Exportar PDF -->
+    <button class="pdf-btn" onclick="exportPDF()" title="Exportar CV en PDF">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
+      </svg>
+      <span data-i18n="export_pdf">Exportar PDF</span>
+    </button>
+  </div>
+
+
+  <!-- ============================================================
+       PÁGINA PRINCIPAL
+       ============================================================ -->
+  <main class="page" id="cv-root">
+
+    <!-- ============================================================
+         HERO — Edita nombre, cargo, contacto aquí
+         ============================================================ -->
+    <header class="hero">
+      <div class="hero__content">
+        <h1 class="hero__name">Lara Claramunt Serra</h1>
+        <!-- CARGO PROFESIONAL — traducciones gestionadas por JS -->
+        <p class="hero__title" data-i18n="hero_role">Firmware Engineer · Full-Stack Developer · Hardware Prototyper</p>
+
+        <div class="hero__meta">
+          <!-- LOCALIZACIÓN -->
+          <span class="hero__meta-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Barcelona, Catalunya
+          </span>
+          <!-- EMAIL — actualiza aquí -->
+          <a class="hero__meta-item" href="mailto:laraclaramuntserra@gmail.com">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            laraclaramuntserra@gmail.com
+          </a>
+          <!-- LINKEDIN -->
+          <a class="hero__meta-item" href="https://www.linkedin.com/in/lara-claramunt-serra/" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            LinkedIn
+          </a>
+          <!-- GITHUB — actualiza tu usuario aquí -->
+          <!-- <a class="hero__meta-item" href="https://github.com/" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+            GitHub
+          </a> -->
+        </div>
+      </div>
+
+      <!-- AVATAR iniciales -->
+      <div class="hero__avatar" aria-hidden="true">LC</div>
+    </header>
+
+
+    <!-- ============================================================
+         SOBRE MÍ
+         ============================================================ -->
+    <section class="section" id="section-about">
+      <h2 class="section__label">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="7" r="4"/><path d="M20 21a8 8 0 1 0-16 0"/></svg>
+        <span data-i18n="label_about">Sobre mí</span>
+      </h2>
+      <!-- TEXTO SOBRE MÍ — traducciones en JS -->
+      <p class="about__text" data-i18n="about_text">
+        Leo diariamente y soy una persona proactiva con inquietud por aprender. Tiendo a cuestionarme el porqué de las cosas para poder entender cómo funciona todo lo que me rodea. Me gustan los retos y reinventarme, así como asumir proyectos y responsabilidades. Impulsada por esa inquietud de aprender, he creado mi propio coche teledirigido con app propia, una app para seguir rutinas de ejercicios personalizables, una web app para predecir el precio del Bitcoin mediante Machine Learning y el prototipo de una máquina para secar el Scoby de la Kombucha.
+      </p>
+    </section>
+
+
+    <!-- ============================================================
+         SKILLS
+         ============================================================ -->
+    <section class="section" id="section-skills">
+      <h2 class="section__label">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+        <span data-i18n="label_skills">Skills</span>
+      </h2>
+
+      <!-- SKILLS TÉCNICAS — añade/quita tags aquí -->
+      <div class="skills__group">
+        <p class="skills__group-label" data-i18n="skills_tech">Técnicas</p>
+        <div class="tags">
+          <span class="tag tag--accent">STM32 / Firmware</span>
+          <span class="tag">Field-Oriented Control (FOC)</span>
+          <span class="tag">C / C++ Embebido</span>
+          <span class="tag">Python</span>
+          <span class="tag">PyQt5</span>
+          <span class="tag">Machine Learning / LSTM</span>
+          <span class="tag">I²C · SPI · UART · PWM · ADC</span>
+          <span class="tag">PLC</span>
+          <span class="tag">SCADA</span>
+          <span class="tag">PCB Design</span>
+          <span class="tag">Arduino / IoT</span>
+          <span class="tag">JavaScript</span>
+          <span class="tag">React</span>
+          <span class="tag">Node.js</span>
+          <span class="tag">SQL / Firebase</span>
+          <span class="tag">HTML / CSS</span>
+          <span class="tag">SolidWorks</span>
+          <span class="tag">Diseño 3D / FDM</span>
+          <span class="tag">Robótica colaborativa</span>
+          <span class="tag">MIT App Inventor</span>
+        </div>
+      </div>
+
+      <!-- SKILLS PERSONALES -->
+      <div class="skills__group">
+        <p class="skills__group-label" data-i18n="skills_soft">Personales</p>
+        <div class="tags">
+          <span class="tag" data-i18n-tag="tag_curiosity">Curiosidad intelectual</span>
+          <span class="tag" data-i18n-tag="tag_proactive">Proactividad</span>
+          <span class="tag" data-i18n-tag="tag_leadership">Autonomía</span>
+          <span class="tag" data-i18n-tag="tag_learning">Aprendizaje continuo</span>
+          <span class="tag" data-i18n-tag="tag_problem">Resolución de problemas</span>
+          <span class="tag" data-i18n-tag="tag_entrepreneur">Mentalidad emprendedora</span>
+          <span class="tag" data-i18n-tag="tag_multidisciplinary">Perfil multidisciplinar</span>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         EXPERIENCIA
+         ============================================================ -->
+    <section class="section" id="section-experience">
+      <h2 class="section__label">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+        <span data-i18n="label_experience">Experiencia</span>
+      </h2>
+
+      <div class="timeline">
+
+        <!-- ── PUESTO 1 — Edita aquí los datos de cada trabajo ── -->
+        <article class="timeline__item">
+          <div class="timeline__dot"></div>
+          <div class="timeline__header">
+            <h3 class="timeline__role" data-i18n="exp1_role">Ingeniera de Firmware &lt;I+D&gt;</h3>
+            <span class="timeline__date" data-i18n="exp1_date">Oct 2023 – Presente</span>
+          </div>
+          <p class="timeline__company">IntekMedical</p>
+          <!-- <p class="timeline__description"> Actualmente trabajo en el desarrollo de firmware sobre STM32, un campo que me apasiona porque me permite dar vida a dispositivos y sistemas, transformando ideas abstractas en soluciones reales 
+            y funcionales. Mi interés por el firmware comenzó en un entorno de prototipado en FabLab y continuó durante mi experiencia en el eMotorsport. </p> -->
+          <ul class="timeline__bullets">
+            <li data-i18n="exp1_b1">Desarrollo de firmware en STM32 para control de motores síncronos mediante FOC y sistemas de control neumático.</li>
+            <li data-i18n="exp1_b2">Implementación de lazos de control PI en cascada (velocidad → corriente) con ajuste dinámico de referencia de corriente.</li>
+            <li data-i18n="exp1_b3">Diseño de un protocolo ligero personalizado para sincronización en tiempo real de múltiples motores.</li>
+            <li data-i18n="exp1_b4">Integración de periféricos (I²C, SPI, UART, PWM, ADC) con sensores y drivers de motor.</li>
+            <li data-i18n="exp1_b5">Desarrollo de aplicación de escritorio PyQt5 para monitorización en tiempo real de la corriente del motor.</li>
+          </ul>
+        </article>
+
+        <!-- ── PUESTO 2 ── -->
+        <article class="timeline__item">
+          <div class="timeline__dot"></div>
+          <div class="timeline__header">
+            <h3 class="timeline__role" data-i18n="exp2_role">Automatización e Innovación en la Industria 4.0 &lt;I+D+i&gt;</h3>
+            <span class="timeline__date" data-i18n="exp2_date">Jun 2022 – Oct 2023</span>
+          </div>
+          <p class="timeline__company">CIM UPC</p>
+          <ul class="timeline__bullets">
+            <li data-i18n="exp2_b1">Programación de robots colaborativos mediante PLC.</li>
+            <li data-i18n="exp2_b2">Integración de sensores industriales y almacenamiento de datos en bases de datos.</li>
+            <li data-i18n="exp2_b3">Desarrollo de aplicaciones web para visualización y filtrado de datos industriales.</li>
+            <li data-i18n="exp2_b4">Adaptación de robot colaborativo a procesos de impresión 3D y soldadura WAAM.</li>
+          </ul>
+        </article>
+
+        <!-- ── PUESTO 3 ── -->
+        <article class="timeline__item">
+          <div class="timeline__dot"></div>
+          <div class="timeline__header">
+            <h3 class="timeline__role" data-i18n="exp3_role">Electrónica Formula Student</h3>
+            <span class="timeline__date" data-i18n="exp3_date">Sep 2022 – Jul 2023</span>
+          </div>
+          <p class="timeline__company">BCN eMotorsport</p>
+          <ul class="timeline__bullets">
+            <li data-i18n="exp3_b1">Rediseño de la placa PCB del sistema de gestión de baterías (BMS) de un vehículo de competición estudiantil.</li>
+            <li data-i18n="exp3_b2">Validación electrónica del BMS rediseñado.</li>
+          </ul>
+        </article>
+
+        <!-- ── PUESTO 4 ── -->
+        <article class="timeline__item">
+          <div class="timeline__dot"></div>
+          <div class="timeline__header">
+            <h3 class="timeline__role" data-i18n="exp4_role">Prototipado</h3>
+            <span class="timeline__date" data-i18n="exp4_date">May 2021 – Ago 2022</span>
+          </div>
+          <p class="timeline__company">FabLab Sant Cugat</p>
+          <ul class="timeline__bullets">
+            <li data-i18n="exp4_b1">Desarrollo de prototipos con fabricación digital, diseño 3D, electrónica y programación.</li>
+            <li data-i18n="exp4_b2">Creación de una máquina de secado del Scoby de Kombucha con control remoto, base de datos (Firebase) y webapp.</li>
+          </ul>
+        </article>
+
+        <!-- ── PUESTO 5 ── -->
+        <article class="timeline__item">
+          <div class="timeline__dot"></div>
+          <div class="timeline__header">
+            <h3 class="timeline__role" data-i18n="exp5_role">Brand Marketing Intern</h3>
+            <span class="timeline__date" data-i18n="exp5_date">Feb 2022 – Jun 2022</span>
+          </div>
+          <p class="timeline__company">YABA</p>
+          <ul class="timeline__bullets">
+            <li data-i18n="exp5_b1">Gestión de marketing de marca en Amazon.</li>
+            <li data-i18n="exp5_b2">Desarrollo de estrategias de captación de clientes.</li>
+          </ul>
+        </article>
+
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         EDUCACIÓN
+         ============================================================ -->
+    <section class="section" id="section-education">
+      <h2 class="section__label">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+        <span data-i18n="label_education">Educación</span>
+      </h2>
+
+      <div class="edu-grid">
+
+        <!-- Edita cada edu-item con los datos del alumno -->
+        <div class="edu-item">
+          <div class="edu-item__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+          </div>
+          <div>
+            <p class="edu-item__school">CaixaBank Tech & UPC</p>
+            <p class="edu-item__degree" data-i18n="edu6_degree">Backend en Fintech</p>
+            <p class="edu-item__date">May 2026 – Presente</p>
+          </div>
+        </div>
+
+        <div class="edu-item">
+          <div class="edu-item__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <div>
+            <p class="edu-item__school">CIM UPC & ATICCO Lab</p>
+            <p class="edu-item__degree" data-i18n="edu5_degree">Industrial Tech & Emprendimiento</p>
+            <p class="edu-item__date">Sep 2025 – Dic 2025</p>
+          </div>
+        </div>
+
+        <div class="edu-item">
+          <div class="edu-item__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+          </div>
+          <div>
+            <p class="edu-item__school">UPC School — Universitat Politècnica de Catalunya</p>
+            <p class="edu-item__degree" data-i18n="edu1_degree">Posgrado en Full-Stack Web Technologies</p>
+            <p class="edu-item__date">Feb 2024 – Sep 2024</p>
+          </div>
+        </div>
+
+        <div class="edu-item">
+          <div class="edu-item__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          </div>
+          <div>
+            <p class="edu-item__school">Kaunas University of Technology</p>
+            <p class="edu-item__degree" data-i18n="edu2_degree">Erasmus — Electrónica, Informática y Mecánica</p>
+            <p class="edu-item__date">Ago 2021 – Feb 2023</p>
+          </div>
+        </div>
+
+        <div class="edu-item">
+          <div class="edu-item__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+          </div>
+          <div>
+            <p class="edu-item__school">Universitat Politècnica de Catalunya — ETSEIB</p>
+            <p class="edu-item__degree" data-i18n="edu3_degree">Graduada en Ingeniería Industrial</p>
+            <p class="edu-item__date">Sep 2016 – Ene 2023</p>
+          </div>
+        </div>
+
+        <div class="edu-item">
+          <div class="edu-item__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <div>
+            <p class="edu-item__school">Santander X Explorer</p>
+            <p class="edu-item__degree" data-i18n="edu4_degree">Programa Explorer X — Emprendimiento</p>
+            <p class="edu-item__date">Ene 2021 – Jun 2021</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         PROYECTOS
+         ============================================================ -->
+    <section class="section" id="section-projects">
+      <h2 class="section__label">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+        <span data-i18n="label_projects">Proyectos</span>
+      </h2>
+
+      <div class="projects-grid">
+
+        <!-- Edita cada project-card con los datos del proyecto -->
+        <div class="project-card">
+          <p class="project-card__title">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+            Bitcoin Price Prediction
+          </p>
+          <p class="project-card__tech">Python · LSTM · Machine Learning</p>
+          <p class="project-card__desc" data-i18n="proj1_desc">Red neuronal LSTM entrenada con datos reales de Bitcoin 2012–2019 para predecir precios futuros. Web app interactiva para ajustar hiperparámetros del modelo en tiempo real.</p>
+        </div>
+
+        <div class="project-card">
+          <p class="project-card__title">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+            Kombucha Drying Machine
+          </p>
+          <p class="project-card__tech">Arduino · IoT · Firebase · WebApp</p>
+          <p class="project-card__desc" data-i18n="proj2_desc">Máquina completa para secar Scoby de Kombucha: electrónica diseñada desde cero, carcasa 3D, conexión Wi-Fi y control/monitorización remota vía webapp y Firebase.</p>
+        </div>
+
+        <div class="project-card">
+          <p class="project-card__title">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+            Remote Controlled Car &amp; App
+          </p>
+          <p class="project-card__tech">Arduino · MIT App Inventor · Bluetooth</p>
+          <p class="project-card__desc" data-i18n="proj3_desc">Coche de juguete reconvertido: electrónica basada en Arduino y app móvil propia para controlarlo por Bluetooth en tiempo real.</p>
+        </div>
+
+        <div class="project-card">
+          <p class="project-card__title">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg>
+            GYM App
+          </p>
+          <p class="project-card__tech">MIT App Inventor</p>
+          <p class="project-card__desc" data-i18n="proj4_desc">App de rutina de ejercicios personalizable con imágenes, temporizador y selección de repeticiones por ejercicio.</p>
+        </div>
+
+        <div class="project-card">
+          <p class="project-card__title">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            MINDINK
+          </p>
+          <p class="project-card__tech">EdTech · SantanderX Explorer</p>
+          <p class="project-card__desc" data-i18n="proj5_desc">Herramienta para estudiantes que elimina tareas redundantes y facilita la interiorización de conceptos. Proyecto finalizado en el programa Explorer Santander.</p>
+        </div>
+
+        <div class="project-card">
+          <p class="project-card__title">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="1"/><path d="M12 1v6m0 6v6"/><path d="M4.22 4.22l4.24 4.24m5.08 0l4.24-4.24"/><path d="M1 12h6m6 0h6"/><path d="M4.22 19.78l4.24-4.24m5.08 0l4.24 4.24"/></svg>
+            Electric Skateboard [On going]
+          </p>
+          <p class="project-card__tech">STM32 · FOC · Mechatronics · BLDC</p>
+          <p class="project-card__desc" data-i18n="proj6_desc">Electric skateboard design combining mechanical and electronics perspectives. Motor torque calculation based on slope and load conditions, battery sizing and power delivery analysis to driver, and FOC implementation on STM32 for efficient BLDC motor control.</p>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         IDIOMAS
+         ============================================================ -->
+    <section class="section" id="section-languages">
+      <h2 class="section__label">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        <span data-i18n="label_languages">Idiomas</span>
+      </h2>
+
+      <div class="langs-grid">
+        <!-- Edita nivel: 100 = nativo, 75 = B2/avanzado, 50 = B1/intermedio -->
+        <div class="lang-card">
+          <p class="lang-card__name" data-i18n="lang1_name">Catalán</p>
+          <p class="lang-card__level" data-i18n="lang1_level">Nativo</p>
+          <div class="lang-card__bar"><div class="lang-card__fill" style="width:100%"></div></div>
+        </div>
+        <div class="lang-card">
+          <p class="lang-card__name" data-i18n="lang2_name">Español</p>
+          <p class="lang-card__level" data-i18n="lang2_level">Nativo</p>
+          <div class="lang-card__bar"><div class="lang-card__fill" style="width:100%"></div></div>
+        </div>
+        <div class="lang-card">
+          <p class="lang-card__name" data-i18n="lang3_name">Inglés</p>
+          <p class="lang-card__level" data-i18n="lang3_level">B2 — Cambridge FCE</p>
+          <div class="lang-card__bar"><div class="lang-card__fill" style="width:72%"></div></div>
+        </div>
+        <div class="lang-card">
+          <p class="lang-card__name" data-i18n="lang4_name">Francés</p>
+          <p class="lang-card__level" data-i18n="lang4_level">B2 — DELF</p>
+          <div class="lang-card__bar"><div class="lang-card__fill" style="width:72%"></div></div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         CERTIFICACIONES
+         ============================================================ -->
+    <section class="section" id="section-certifications">
+      <h2 class="section__label">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg>
+        <span data-i18n="label_certs">Certificaciones</span>
+      </h2>
+
+      <div class="certs-grid">
+        <!-- Edita cada cert-item con nombre e institución -->
+        <div class="cert-item"><div class="cert-item__dot"></div><div><p class="cert-item__name">Certification in SCADA</p><p class="cert-item__issuer">CIM UPC · Abr 2023</p></div></div>
+        <div class="cert-item"><div class="cert-item__dot"></div><div><p class="cert-item__name">Advanced PLC Certification</p><p class="cert-item__issuer">CIM UPC · Mar 2023</p></div></div>
+        <div class="cert-item"><div class="cert-item__dot"></div><div><p class="cert-item__name">Android App Development</p><p class="cert-item__issuer">Eurecat Academy · May 2022</p></div></div>
+        <div class="cert-item"><div class="cert-item__dot"></div><div><p class="cert-item__name">SolidWorks Associate Mechanical Design</p><p class="cert-item__issuer">SolidWorks ATC · Oct 2019</p></div></div>
+        <!-- <div class="cert-item"><div class="cert-item__dot"></div><div><p class="cert-item__name">First Certificate Exam (FCE)</p><p class="cert-item__issuer">University of Cambridge · Jun 2017</p></div></div> -->
+        <!-- <div class="cert-item"><div class="cert-item__dot"></div><div><p class="cert-item__name">DELF B2 — Français</p><p class="cert-item__issuer">Institut français · Jun 2014</p></div></div> -->
+        <div class="cert-item"><div class="cert-item__dot"></div><div><p class="cert-item__name">Neuro-linguistic Programming (NLP)</p><p class="cert-item__issuer">Mauricio Benoist · Jul 2020</p></div></div>
+        <div class="cert-item"><div class="cert-item__dot"></div><div><p class="cert-item__name">Entrepreneurial Mindset</p><p class="cert-item__issuer">Emprende Aprendiendo · Jul 2020</p></div></div>
+        <div class="cert-item"><div class="cert-item__dot"></div><div><p class="cert-item__name">Expansive Coaching</p><p class="cert-item__issuer">Mauricio Benoist · Dic 2020</p></div></div>
+        <div class="cert-item"><div class="cert-item__dot"></div><div><p class="cert-item__name">Speed Reading Techniques</p><p class="cert-item__issuer">Mindvalley · Ene 2021</p></div></div>
+        <div class="cert-item"><div class="cert-item__dot"></div><div><p class="cert-item__name">Cybersecurity, Robotics &amp; App Creation</p><p class="cert-item__issuer">La Salle BCN · Ene 2015</p></div></div>
+        <div class="cert-item"><div class="cert-item__dot"></div><div><p class="cert-item__name">Scuba Diving License B1-E</p><p class="cert-item__issuer">CMAS · Mar 2019</p></div></div>
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         FOOTER
+         ============================================================ -->
+    <footer class="footer">
+      <div class="footer__divider"></div>
+      <p data-i18n="footer_text">Lara Claramunt Serra · Firmware Engineer &amp; Creadora de Proyectos · Barcelona</p>
+    </footer>
+
+  </main><!-- /page -->
+
+
+  <!-- ============================================================
+       JAVASCRIPT — Idiomas + Dark Mode + PDF export
+       ============================================================ -->
+  <script>
+    /* ============================================================
+       TRADUCCIONES — Edita aquí los textos en cada idioma
+       ============================================================ */
+    const i18n = {
+      es: {
+        export_pdf:       'Exportar PDF',
+        hero_role:        'Firmware Engineer · Ingeniera Industrial',
+        label_about:      'Sobre mí',
+        about_text:       'Leo diariamente y soy una persona proactiva con inquietud por aprender. Tiendo a cuestionarme el porqué de las cosas para poder entender cómo funciona todo lo que me rodea. Me gustan los retos y reinventarme, así como asumir proyectos y responsabilidades. Impulsada por esa inquietud de aprender, he creado mi propio coche teledirigido con app propia, una app para rutinas de ejercicios personalizables, una web app de predicción del Bitcoin con Machine Learning y el prototipo de una máquina para secar el Scoby de la Kombucha.',
+        label_skills:     'Skills',
+        skills_tech:      'Técnicas',
+        skills_soft:      'Personales',
+        tag_curiosity:    'Curiosidad intelectual',
+        tag_proactive:    'Proactividad',
+        tag_leadership:   'Autonomía',
+        tag_learning:     'Aprendizaje continuo',
+        tag_problem:      'Resolución de problemas',
+        tag_entrepreneur: 'Mentalidad emprendedora',
+        tag_multidisciplinary: 'Perfil multidisciplinar',
+        label_experience: 'Experiencia',
+        exp1_role:  'Ingeniera de Firmware <I+D>',
+        exp1_date:  'Oct 2023 – Presente',
+        exp1_b1:    'Desarrollo de firmware en STM32 para control de motores síncronos mediante FOC y sistemas de control neumático.',
+        exp1_b2:    'Implementación de lazos de control PI en cascada (velocidad → corriente) con ajuste dinámico de referencia.',
+        exp1_b3:    'Diseño de un protocolo ligero personalizado para sincronización en tiempo real de múltiples motores.',
+        exp1_b4:    'Integración de periféricos (I²C, SPI, UART, PWM, ADC) con sensores y drivers de motor.',
+        exp1_b5:    'Desarrollo de aplicación de escritorio PyQt5 para monitorización en tiempo real de la corriente del motor.',
+        exp2_role:  'Automatización e Innovación en la Industria 4.0 <I+D+i>',
+        exp2_date:  'Jun 2022 – Oct 2023',
+        exp2_b1:    'Programación de robots colaborativos mediante PLC.',
+        exp2_b2:    'Integración de sensores industriales y almacenamiento de datos en bases de datos.',
+        exp2_b3:    'Desarrollo de aplicaciones web para visualización y filtrado de datos industriales.',
+        exp2_b4:    'Adaptación de robot colaborativo a procesos de impresión 3D y soldadura WAAM.',
+        exp3_role:  'Electrónica Formula Student',
+        exp3_date:  'Sep 2022 – Jul 2023',
+        exp3_b1:    'Rediseño de la placa PCB del sistema de gestión de baterías (BMS) de un vehículo de competición estudiantil.',
+        exp3_b2:    'Validación electrónica del BMS rediseñado.',
+        exp4_role:  'Prototipado',
+        exp4_date:  'May 2021 – Ago 2022',
+        exp4_b1:    'Desarrollo de prototipos con fabricación digital, diseño 3D, electrónica y programación.',
+        exp4_b2:    'Creación de una máquina de secado del Scoby de Kombucha con control remoto, base de datos (Firebase) y webapp.',
+        exp5_role:  'Brand Marketing Intern',
+        exp5_date:  'Feb 2022 – Jun 2022',
+        exp5_b1:    'Gestión de marketing de marca en Amazon.',
+        exp5_b2:    'Desarrollo de estrategias de captación de clientes.',
+        label_education: 'Educación',
+        edu1_degree: 'Posgrado en Full-Stack Web Technologies',
+        edu2_degree: 'Erasmus — Electrónica, Informática y Mecánica',
+        edu3_degree: 'Graduada en Ingeniería Industrial',
+        edu4_degree: 'Programa Explorer X — Emprendimiento (Beca Santander)',
+        edu5_degree: 'Programa de emprendimiento para desarrollo de proyecto industrial.',
+        edu6_degree: 'Curso de backend con Spring Boot aplicado a fintech.',
+        label_projects: 'Proyectos',
+        proj1_desc: 'Red neuronal LSTM entrenada con datos reales de Bitcoin 2012–2019 para predecir precios futuros. Web app interactiva para ajustar hiperparámetros del modelo en tiempo real.',
+        proj2_desc: 'Máquina completa para secar Scoby de Kombucha: electrónica diseñada desde cero, carcasa 3D, conexión Wi-Fi y control/monitorización remota vía webapp y Firebase.',
+        proj3_desc: 'Coche de juguete reconvertido: electrónica basada en Arduino y app móvil propia para controlarlo por Bluetooth en tiempo real.',
+        proj4_desc: 'App de rutina de ejercicios personalizable con imágenes, temporizador y selección de repeticiones por ejercicio.',
+        proj5_desc: 'Herramienta para estudiantes que elimina tareas redundantes y facilita la interiorización de conceptos. Proyecto finalizado en el programa Explorer Santander.',
+        proj6_desc: 'Diseño de un skate eléctrico con análisis mecánico y electrónico, cálculo de par, dimensionamiento de batería e implementación de control FOC en STM32 para motores BLDC.',
+        label_languages: 'Idiomas',
+        lang1_name: 'Catalán', lang1_level: 'Nativo',
+        lang2_name: 'Español', lang2_level: 'Nativo',
+        lang3_name: 'Inglés',  lang3_level: 'B2 — Cambridge FCE',
+        lang4_name: 'Francés', lang4_level: 'B2 — DELF',
+        label_certs: 'Certificaciones',
+        footer_text: 'Lara Claramunt Serra · Firmware Engineer & Creadora de Proyectos · Barcelona',
+      },
+
+      ca: {
+        export_pdf:       'Exportar PDF',
+        hero_role:        'Enginyera de Firmware · Enginyera Industrial',
+        label_about:      'Sobre mi',
+        about_text:       'Llegeixo diàriament i soc una persona proactiva amb inquietud per aprendre. Tendeixo a qüestionar-me el perquè de les coses per entendre com funciona tot allò que m\'envolta. M\'agraden els reptes i reinventar-me, així com assumir projectes i responsabilitats. Impulsada per aquesta inquietud d\'aprendre, he creat el meu propi cotxe teledirigit amb app pròpia, una app per seguir rutines d\'exercicis personalitzables, una web app per predir el preu del Bitcoin amb Machine Learning i el prototip d\'una màquina per assecar el Scoby de la Kombucha.',
+        label_skills:     'Habilitats',
+        skills_tech:      'Tècniques',
+        skills_soft:      'Personals',
+        tag_curiosity:    'Curiositat intel·lectual',
+        tag_proactive:    'Proactivitat',
+        tag_leadership:   'Autonomia',
+        tag_learning:     'Aprenentatge continu',
+        tag_problem:      'Resolució de problemes',
+        tag_entrepreneur: 'Mentalitat emprenedora',
+        tag_multidisciplinary: 'Perfil multidisciplinari',
+        label_experience: 'Experiència',
+        exp1_role:  'Enginyera de Firmware <R+D>',
+        exp1_date:  'Oct 2023 – Present',
+        exp1_b1:    'Desenvolupament de firmware en STM32 per al control de motors síncrons mitjançant FOC i sistemes de control pneumàtic.',
+        exp1_b2:    'Implementació de llaços de control PI en cascada (velocitat → corrent) amb ajust dinàmic de referència.',
+        exp1_b3:    'Disseny d\'un protocol lleuger personalitzat per a la sincronització en temps real de múltiples motors.',
+        exp1_b4:    'Integració de perifèrics (I²C, SPI, UART, PWM, ADC) amb sensors i drivers de motor.',
+        exp1_b5:    'Desenvolupament d\'aplicació d\'escriptori PyQt5 per a la monitorització en temps real del corrent del motor.',
+        exp2_role:  'Automatització i Innovació a la Indústria 4.0 <R+D+I>',
+        exp2_date:  'Jun 2022 – Oct 2023',
+        exp2_b1:    'Programació de robots col·laboratius mitjançant PLC.',
+        exp2_b2:    'Integració de sensors industrials i emmagatzematge de dades en bases de dades.',
+        exp2_b3:    'Desenvolupament d\'aplicacions web per a la visualització i filtratge de dades industrials.',
+        exp2_b4:    'Adaptació de robot col·laboratiu a processos d\'impressió 3D i soldadura WAAM.',
+        exp3_role:  'Electrònica Formula Student',
+        exp3_date:  'Set 2022 – Jul 2023',
+        exp3_b1:    'Redisseny de la placa PCB del sistema de gestió de bateries (BMS) d\'un vehicle de competició estudiantil.',
+        exp3_b2:    'Validació electrònica del BMS redissenyat.',
+        exp4_role:  'Prototipatge',
+        exp4_date:  'Maig 2021 – Ago 2022',
+        exp4_b1:    'Desenvolupament de prototips amb fabricació digital, disseny 3D, electrònica i programació.',
+        exp4_b2:    'Creació d\'una màquina d\'assecatge del Scoby de Kombucha amb control remot, base de dades (Firebase) i webapp.',
+        exp5_role:  'Brand Marketing Intern',
+        exp5_date:  'Feb 2022 – Jun 2022',
+        exp5_b1:    'Gestió de màrqueting de marca a Amazon.',
+        exp5_b2:    'Desenvolupament d\'estratègies de captació de clients.',
+        label_education: 'Educació',
+        edu1_degree: 'Postgrau en Full-Stack Web Technologies',
+        edu2_degree: 'Erasmus — Electrònica, Informàtica i Mecànica',
+        edu3_degree: 'Graduada en Enginyeria Industrial',
+        edu4_degree: 'Programa Explorer X — Emprenedoria (Beca Santander)',
+        edu5_degree: 'Curs de backend amb Spring Boot aplicat a fintech.',
+        edu6_degree: 'Programa d’emprenedoria per al desenvolupament d’un projecte industrial.',
+        label_projects: 'Projectes',
+        proj1_desc: 'Xarxa neuronal LSTM entrenada amb dades reals de Bitcoin 2012–2019 per predir preus futurs. Web app interactiva per ajustar hiperparàmetres del model en temps real.',
+        proj2_desc: 'Màquina completa per assecar Scoby de Kombucha: electrònica dissenyada des de zero, carcassa 3D, connexió Wi-Fi i control/monitoratge remot via webapp i Firebase.',
+        proj3_desc: 'Cotxe de joguina reconvertit: electrònica basada en Arduino i app mòbil pròpia per controlar-lo per Bluetooth en temps real.',
+        proj4_desc: 'App de rutina d\'exercicis personalitzable amb imatges, temporitzador i selecció de repeticions per exercici.',
+        proj5_desc: 'Eina per a estudiants que elimina tasques redundants i facilita la interiorització de conceptes. Projecte finalitzat al programa Explorer Santander.',
+        proj6_desc: 'Disseny d’un skate elèctric amb anàlisi mecànica i electrònica, càlcul de parell, dimensionament de bateria i implementació de control FOC en STM32 per a motors BLDC.',        
+        label_languages: 'Idiomes',
+        lang1_name: 'Català',  lang1_level: 'Natiu',
+        lang2_name: 'Espanyol', lang2_level: 'Natiu',
+        lang3_name: 'Anglès',  lang3_level: 'B2 — Cambridge FCE',
+        lang4_name: 'Francès', lang4_level: 'B2 — DELF',
+        label_certs: 'Certificacions',
+        footer_text: 'Lara Claramunt Serra · Enginyera de Firmware & Creadora de Projectes · Barcelona',
+      },
+
+      en: {
+        export_pdf:       'Export PDF',
+        hero_role:        'Firmware Engineer · Industrial Engineer',
+        label_about:      'About me',
+        about_text:       'I read every day and I am a proactive person with a drive to learn. I tend to question why things work the way they do in order to understand everything around me. I enjoy challenges and reinventing myself, as well as taking on projects and responsibilities. Driven by this curiosity, I have built my own RC car with a custom app, an app for customizable workout routines, a web app that predicts Bitcoin prices using Machine Learning, and a prototype machine for drying Kombucha Scoby.',
+        label_skills:     'Skills',
+        skills_tech:      'Technical',
+        skills_soft:      'Personal',
+        tag_curiosity:    'Intellectual curiosity',
+        tag_proactive:    'Proactivity',
+        tag_leadership:   'Self-management',
+        tag_learning:     'Continuous learning',
+        tag_problem:      'Problem solving',
+        tag_entrepreneur: 'Entrepreneurial mindset',
+        tag_multidisciplinary: 'Multidisciplinary profile',
+        label_experience: 'Experience',
+        exp1_role:  'Firmware Engineer <R&D>',
+        exp1_date:  'Oct 2023 – Present',
+        exp1_b1:    'Firmware development on STM32 for synchronous motor control via FOC and pneumatic control systems.',
+        exp1_b2:    'Implementation of cascaded PI control loops (speed → current) with dynamic current reference adjustment.',
+        exp1_b3:    'Design of a custom lightweight protocol for real-time multi-motor synchronization.',
+        exp1_b4:    'Integration of peripherals (I²C, SPI, UART, PWM, ADC) with sensors and motor drivers.',
+        exp1_b5:    'Development of a PyQt5 desktop application for real-time motor current monitoring.',
+        exp2_role:  'Automation & Innovation in Industry 4.0 <R&D>',
+        exp2_date:  'Jun 2022 – Oct 2023',
+        exp2_b1:    'Programming of collaborative robots using PLC.',
+        exp2_b2:    'Integration of industrial sensors and data storage in databases.',
+        exp2_b3:    'Development of web applications for industrial data visualization and filtering.',
+        exp2_b4:    'Adaptation of a collaborative robot to 3D printing and WAAM welding processes.',
+        exp3_role:  'Electronics — Formula Student',
+        exp3_date:  'Sep 2022 – Jul 2023',
+        exp3_b1:    'Redesign of the PCB for the Battery Management System (BMS) of a student competition vehicle.',
+        exp3_b2:    'Electronic validation of the redesigned BMS.',
+        exp4_role:  'Prototyping',
+        exp4_date:  'May 2021 – Aug 2022',
+        exp4_b1:    'Development of prototypes combining digital fabrication, 3D design, electronics and programming.',
+        exp4_b2:    'Creation of a Kombucha Scoby drying machine with remote control, Firebase database and webapp.',
+        exp5_role:  'Brand Marketing Intern',
+        exp5_date:  'Feb 2022 – Jun 2022',
+        exp5_b1:    'Brand marketing management on Amazon.',
+        exp5_b2:    'Development of customer acquisition strategies.',
+        label_education: 'Education',
+        edu1_degree: 'Postgraduate in Full-Stack Web Technologies',
+        edu2_degree: 'Erasmus — Electronics, Computer Science & Mechanics',
+        edu3_degree: 'Bachelor\'s Degree in Industrial Engineering',
+        edu4_degree: 'Explorer X Programme — Entrepreneurship (Santander Grant)',
+        edu5_degree: 'Entrepreneurship program for industrial project development.',
+        edu6_degree: 'Backend course with Spring Boot applied to fintech.',
+        label_projects: 'Projects',
+        proj1_desc: 'LSTM neural network trained on real Bitcoin data (2012–2019) to predict future prices. Interactive web app to tune model hyperparameters in real time.',
+        proj2_desc: 'Full Kombucha Scoby drying machine: electronics designed from scratch, 3D-printed enclosure, Wi-Fi connection, remote control and monitoring via webapp and Firebase.',
+        proj3_desc: 'Repurposed toy car: Arduino-based electronics and custom mobile app to control it via Bluetooth in real time.',
+        proj4_desc: 'Customizable workout routine app with exercise images, timer and rep selection per exercise.',
+        proj5_desc: 'Tool for students that removes redundant tasks and facilitates concept internalization. Completed within the Santander Explorer Programme.',
+        proj6_desc: 'Electric skateboard design with mechanical/electronic analysis, torque calculation, battery sizing, and FOC control implementation on STM32 for BLDC motors.',
+        label_languages: 'Languages',
+        lang1_name: 'Catalan',  lang1_level: 'Native',
+        lang2_name: 'Spanish',  lang2_level: 'Native',
+        lang3_name: 'English',  lang3_level: 'B2 — Cambridge FCE',
+        lang4_name: 'French',   lang4_level: 'B2 — DELF',
+        label_certs: 'Certifications',
+        footer_text: 'Lara Claramunt Serra · Firmware Engineer & Projects Creator · Barcelona',
+      },
+    };
+
+    /* ============================================================
+       IDIOMA — Aplica traducciones al DOM
+       ============================================================ */
+    let currentLang = 'ca';
+
+    function setLang(lang) {
+      currentLang = lang;
+      const t = i18n[lang];
+      // Actualiza todos los elementos con data-i18n
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.dataset.i18n;
+        if (t[key] !== undefined) el.textContent = t[key];
+      });
+      // Tags con clave propia
+      document.querySelectorAll('[data-i18n-tag]').forEach(el => {
+        const key = el.dataset.i18nTag;
+        if (t[key] !== undefined) el.textContent = t[key];
+      });
+      // Actualiza botones de idioma activo
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.lang === lang);
+      });
+      // Actualiza atributo lang del html para accesibilidad
+      document.documentElement.lang = lang;
+    }
+
+    /* ============================================================
+       DARK MODE — Toggle
+       ============================================================ */
+    function toggleDark() {
+      const html = document.documentElement;
+      const isDark = html.dataset.theme === 'dark';
+      html.dataset.theme = isDark ? 'light' : 'dark';
+      document.getElementById('icon-sun').style.display  = isDark ? 'block' : 'none';
+      document.getElementById('icon-moon').style.display = isDark ? 'none'  : 'block';
+    }
+
+    /* ============================================================
+       EXPORT PDF — Imprime la página como PDF
+       ============================================================ */
+    function exportPDF() {
+      // Nombre del archivo con el nombre de la persona
+      const name  = 'Lara_Claramunt_Serra'; // ← Edita si cambias el nombre
+      const lang  = currentLang.toUpperCase();
+      document.title = `CV_${name}_${lang}`;
+      window.print();
+    }
+
+    /* ============================================================
+       INIT — Configura el idioma inicial
+       ============================================================ */
+    setLang('ca');
+  </script>
+
+</body>
+</html>
