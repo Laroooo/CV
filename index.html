@@ -679,8 +679,19 @@
       /* Colores exactos */
       * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
  
-      /* Página A4 con márgenes cómodos */
-      @page { size: A4 portrait; margin: 12mm 15mm 14mm 15mm; }
+      /* Fuerza que SIEMPRE se imprima igual */
+      @page { 
+        size: A4 portrait; 
+        margin: 12mm 15mm 14mm 15mm;
+      }
+
+      /* Limita el ancho máximo para que quepa en A4 */
+      .page {
+        max-width: 100%;
+        width: 21cm;  /* ← Ancho exacto de A4 */
+        margin: 0 auto;
+        padding: 0 !important;
+      }
  
       /* Fuente base más pequeña para que todo quepa mejor */
       body {
