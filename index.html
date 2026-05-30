@@ -717,15 +717,16 @@
       transition: color var(--transition);
     }
 
-    /* Fill animado - simplificado */
+    /* Fill animado */
     .nav-visual__fill {
       position: absolute;
+      bottom: 0;
       left: 0;
       right: 0;
       height: 0%;
       background: var(--clr-accent);
+      transition: height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
       z-index: 1;
-      transition: height 0.15s ease-out, top 0s, bottom 0s;
     }
 
     /* Dots indicadores de items */
@@ -748,6 +749,9 @@
     .nav-visual__item.active .nav-visual__icon {
       border-color: var(--clr-accent);
       background: var(--clr-accent-soft);
+    }
+    .nav-visual__item.active .nav-visual__fill {
+      height: 100%;
     }
     .nav-visual__item.active .nav-visual__icon svg {
       color: #fff;
@@ -796,17 +800,6 @@
       }
       .nav-visual__dots {
         display: none; /* Ocultar dots en móvil para simplificar */
-      }
-
-      /* En móvil: fill horizontal (izquierda a derecha) */
-      .nav-visual__fill {
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: auto;
-        height: 100%;
-        width: 0%;
-        transition: width 0.15s ease-out;
       }
     }
 
@@ -1820,106 +1813,36 @@
     setLang('ca');
 
     /* ============================================================
-       NAV VISUAL — Fill basado en posición dentro de cada sección
+       NAV VISUAL — Detectar scroll y actualizar sección activa
        ============================================================ */
     (function() {
-      // ✅ CONFIGURABLE: Porcentaje de la sección donde el fill está al 100%
-      // Ejemplo: 0.8 = el fill llega al 100% cuando estás al 80% de la sección
-      const PERCENTAGE_HEIGHT_MAX_FILL = 0.8;
-      
-      // Porcentaje inicial donde empieza a llenarse (del 0% al X% de la sección)
-      const FILL_START_PERCENT = 0.1;
-
       const navItems = document.querySelectorAll('.nav-visual__item');
       const sections = [];
-      const isMobile = () => window.innerWidth <= 600;
 
-      navItems.forEach((item, index) => {
+      navItems.forEach(item => {
         const sectionId = item.dataset.section;
         const section = document.getElementById(sectionId);
-        const fill = item.querySelector('.nav-visual__fill');
-        if (section && fill) {
-          sections.push({ id: sectionId, el: section, nav: item, fill, index });
-        }
+        if (section) sections.push({ id: sectionId, el: section, nav: item });
       });
 
-      function updateFills() {
-        const scrollY = window.scrollY;
-        const viewportHeight = window.innerHeight;
-        const triggerPoint = scrollY + viewportHeight / 3;
+      function updateActiveSection() {
+        const scrollY = window.scrollY + window.innerHeight / 3;
 
-        sections.forEach((s, i) => {
-          const sectionTop = s.el.offsetTop;
-          const sectionHeight = s.el.offsetHeight;
-          const sectionBottom = sectionTop + sectionHeight;
-
-          // Calcular progreso dentro de la sección (0 a 1)
-          let progress = (triggerPoint - sectionTop) / sectionHeight;
-          progress = Math.max(0, Math.min(1, progress));
-
-          let fillPercent = 0;
-
-          if (progress <= 0) {
-            // Aún no hemos llegado a esta sección
-            fillPercent = 0;
-          } else if (progress < FILL_START_PERCENT) {
-            // Entrando en la sección: fill crece de 0% a 100%
-            fillPercent = (progress / FILL_START_PERCENT) * 100;
-          } else if (progress <= PERCENTAGE_HEIGHT_MAX_FILL) {
-            // En el medio de la sección: fill al 100%
-            fillPercent = 100;
-          } else if (progress < 1) {
-            // Saliendo de la sección: fill decrece de 100% a 0%
-            const exitProgress = (progress - PERCENTAGE_HEIGHT_MAX_FILL) / (1 - PERCENTAGE_HEIGHT_MAX_FILL);
-            fillPercent = (1 - exitProgress) * 100;
-          } else {
-            // Ya pasamos esta sección
-            fillPercent = 0;
+        let activeSection = sections[0];
+        for (const s of sections) {
+          if (s.el.offsetTop <= scrollY) {
+            activeSection = s;
           }
+        }
 
-          // Aplicar el fill (height en desktop, width en móvil)
-          if (isMobile()) {
-            s.fill.style.width = fillPercent + '%';
-            s.fill.style.height = '100%';
-            
-            // Dirección del fill en móvil
-            if (progress > PERCENTAGE_HEIGHT_MAX_FILL) {
-              // Saliendo: fill anclado a la derecha, se encoge hacia la derecha
-              s.fill.style.left = 'auto';
-              s.fill.style.right = '0';
-            } else {
-              // Entrando o en medio: fill desde la izquierda
-              s.fill.style.left = '0';
-              s.fill.style.right = 'auto';
-            }
-          } else {
-            s.fill.style.height = fillPercent + '%';
-            s.fill.style.width = '100%';
-            
-            // Dirección del fill en desktop
-            if (progress > PERCENTAGE_HEIGHT_MAX_FILL) {
-              // Saliendo: fill anclado abajo, se encoge hacia abajo
-              s.fill.style.top = 'auto';
-              s.fill.style.bottom = '0';
-            } else {
-              // Entrando o en medio: fill desde arriba
-              s.fill.style.top = '0';
-              s.fill.style.bottom = 'auto';
-            }
-          }
-
-          // Actualizar clase active basado en si tiene fill > 50%
-          if (fillPercent > 50) {
-            s.nav.classList.add('active');
-          } else {
-            s.nav.classList.remove('active');
-          }
-        });
+        navItems.forEach(item => item.classList.remove('active'));
+        if (activeSection) {
+          activeSection.nav.classList.add('active');
+        }
       }
 
-      window.addEventListener('scroll', updateFills, { passive: true });
-      window.addEventListener('resize', updateFills, { passive: true });
-      updateFills(); // Init
+      window.addEventListener('scroll', updateActiveSection, { passive: true });
+      updateActiveSection(); // Init
     })();
   </script>
 
