@@ -667,7 +667,7 @@
       .hero { padding: 28px 24px; grid-template-columns: 1fr; }
       .hero__avatar { display: none; }
       .section { padding: 28px 24px; }
-      .toolbar { top: 10px; right: 10px; padding: 5px 8px; gap: 6px; }
+      .toolbar { top: 10px; right: auto; left: 50%; transform: translateX(-50%); padding: 5px 8px; gap: 6px; }
       .projects-grid { grid-template-columns: 1fr; }
       .certs-grid { grid-template-columns: 1fr; }
     }
@@ -914,7 +914,7 @@
         <div class="tags">
           <span class="tag tag--accent">STM32 / Firmware</span>
           <span class="tag">Field-Oriented Control (FOC)</span>
-          <span class="tag">C / C++ Embebido</span>
+          <span class="tag">Embedded C</span>
           <span class="tag">Python</span>
           <span class="tag">PyQt5</span>
           <span class="tag">Machine Learning / LSTM</span>
@@ -926,11 +926,11 @@
           <span class="tag">JavaScript</span>
           <span class="tag">React</span>
           <span class="tag">Node.js</span>
-          <span class="tag">SQL / Firebase</span>
+          <span class="tag">SQL</span>
           <span class="tag">HTML / CSS</span>
           <span class="tag">SolidWorks</span>
           <span class="tag">Diseño 3D / FDM</span>
-          <span class="tag">Robótica colaborativa</span>
+          <span class="tag">Collaborative robotics</span>
           <span class="tag">MIT App Inventor</span>
         </div>
       </div>
@@ -1140,54 +1140,54 @@
         <div class="project-card">
           <p class="project-card__title">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-            Bitcoin Price Prediction
+            <span data-i18n="proj1_title">Web app para predicción del precio de Bitcoin</span>
           </p>
-          <p class="project-card__tech">Python · LSTM · Machine Learning</p>
+          <p class="project-card__tech" data-i18n="proj1_tech">Python · LSTM · Machine Learning</p>
           <p class="project-card__desc" data-i18n="proj1_desc">Red neuronal LSTM entrenada con datos reales de Bitcoin 2012–2019 para predecir precios futuros. Web app interactiva para ajustar hiperparámetros del modelo en tiempo real.</p>
         </div>
 
         <div class="project-card">
           <p class="project-card__title">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
-            Kombucha Drying Machine
+            <span data-i18n="proj2_title">Kombucha Drying Machine</span>
           </p>
-          <p class="project-card__tech">Arduino · IoT · Firebase · WebApp</p>
+          <p class="project-card__tech" data-i18n="proj2_tech">Arduino · IoT · Firebase · WebApp</p>
           <p class="project-card__desc" data-i18n="proj2_desc">Máquina completa para secar Scoby de Kombucha: electrónica diseñada desde cero, carcasa 3D, conexión Wi-Fi y control/monitorización remota vía webapp y Firebase.</p>
         </div>
 
         <div class="project-card">
           <p class="project-card__title">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
-            Remote Controlled Car &amp; App
+            <span data-i18n="proj3_title">Remote Controlled Car &amp; App</span>
           </p>
-          <p class="project-card__tech">Arduino · MIT App Inventor · Bluetooth</p>
+          <p class="project-card__tech" data-i18n="proj3_tech">Arduino · MIT App Inventor · Bluetooth</p>
           <p class="project-card__desc" data-i18n="proj3_desc">Coche de juguete reconvertido: electrónica basada en Arduino y app móvil propia para controlarlo por Bluetooth en tiempo real.</p>
         </div>
 
         <div class="project-card">
           <p class="project-card__title">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg>
-            GYM App
+            <span data-i18n="proj4_title">GYM App</span>
           </p>
-          <p class="project-card__tech">MIT App Inventor</p>
+          <p class="project-card__tech" data-i18n="proj4_tech">MIT App Inventor</p>
           <p class="project-card__desc" data-i18n="proj4_desc">App de rutina de ejercicios personalizable con imágenes, temporizador y selección de repeticiones por ejercicio.</p>
         </div>
 
         <div class="project-card">
           <p class="project-card__title">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-            MINDINK
+            <span data-i18n="proj5_title">MINDINK</span>
           </p>
-          <p class="project-card__tech">EdTech · SantanderX Explorer</p>
+          <p class="project-card__tech" data-i18n="proj5_tech">EdTech · SantanderX Explorer</p>
           <p class="project-card__desc" data-i18n="proj5_desc">Herramienta para estudiantes que elimina tareas redundantes y facilita la interiorización de conceptos. Proyecto finalizado en el programa Explorer Santander.</p>
         </div>
 
         <div class="project-card">
           <p class="project-card__title">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="1"/><path d="M12 1v6m0 6v6"/><path d="M4.22 4.22l4.24 4.24m5.08 0l4.24-4.24"/><path d="M1 12h6m6 0h6"/><path d="M4.22 19.78l4.24-4.24m5.08 0l4.24 4.24"/></svg>
-            Electric Skateboard [On going]
+            <span data-i18n="proj6_title">Electric Skateboard [On going]</span>
           </p>
-          <p class="project-card__tech">STM32 · FOC · Mechatronics · BLDC</p>
+          <p class="project-card__tech" data-i18n="proj6_tech">STM32 · FOC · Mechatronics · BLDC</p>
           <p class="project-card__desc" data-i18n="proj6_desc">Electric skateboard design combining mechanical and electronics perspectives. Motor torque calculation based on slope and load conditions, battery sizing and power delivery analysis to driver, and FOC implementation on STM32 for efficient BLDC motor control.</p>
         </div>
       </div>
@@ -1240,18 +1240,18 @@
 
       <div class="certs-grid">
         <!-- Edita cada cert-item con nombre e institución -->
-        <div class="cert-item"><div class="cert-item__dot"></div><div><p class="cert-item__name">Certification in SCADA</p><p class="cert-item__issuer">CIM UPC · Abr 2023</p></div></div>
-        <div class="cert-item"><div class="cert-item__dot"></div><div><p class="cert-item__name">Advanced PLC Certification</p><p class="cert-item__issuer">CIM UPC · Mar 2023</p></div></div>
-        <div class="cert-item"><div class="cert-item__dot"></div><div><p class="cert-item__name">Android App Development</p><p class="cert-item__issuer">Eurecat Academy · May 2022</p></div></div>
-        <div class="cert-item"><div class="cert-item__dot"></div><div><p class="cert-item__name">SolidWorks Associate Mechanical Design</p><p class="cert-item__issuer">SolidWorks ATC · Oct 2019</p></div></div>
+        <div class="cert-item"><div class="cert-item__dot"></div><div><p class="cert-item__name" data-i18n="cert1_name">Certification in SCADA</p><p class="cert-item__issuer" data-i18n="cert1_issuer">CIM UPC · Abr 2023</p></div></div>
+        <div class="cert-item"><div class="cert-item__dot"></div><div><p class="cert-item__name" data-i18n="cert2_name">Advanced PLC Certification</p><p class="cert-item__issuer" data-i18n="cert2_issuer">CIM UPC · Mar 2023</p></div></div>
+        <div class="cert-item"><div class="cert-item__dot"></div><div><p class="cert-item__name" data-i18n="cert3_name">Android App Development</p><p class="cert-item__issuer" data-i18n="cert3_issuer">Eurecat Academy · May 2022</p></div></div>
+        <div class="cert-item"><div class="cert-item__dot"></div><div><p class="cert-item__name" data-i18n="cert4_name">SolidWorks Associate Mechanical Design</p><p class="cert-item__issuer" data-i18n="cert4_issuer">SolidWorks ATC · Oct 2019</p></div></div>
         <!-- <div class="cert-item"><div class="cert-item__dot"></div><div><p class="cert-item__name">First Certificate Exam (FCE)</p><p class="cert-item__issuer">University of Cambridge · Jun 2017</p></div></div> -->
         <!-- <div class="cert-item"><div class="cert-item__dot"></div><div><p class="cert-item__name">DELF B2 — Français</p><p class="cert-item__issuer">Institut français · Jun 2014</p></div></div> -->
-        <div class="cert-item"><div class="cert-item__dot"></div><div><p class="cert-item__name">Neuro-linguistic Programming (NLP)</p><p class="cert-item__issuer">Mauricio Benoist · Jul 2020</p></div></div>
-        <div class="cert-item"><div class="cert-item__dot"></div><div><p class="cert-item__name">Entrepreneurial Mindset</p><p class="cert-item__issuer">Emprende Aprendiendo · Jul 2020</p></div></div>
-        <div class="cert-item"><div class="cert-item__dot"></div><div><p class="cert-item__name">Expansive Coaching</p><p class="cert-item__issuer">Mauricio Benoist · Dic 2020</p></div></div>
-        <div class="cert-item"><div class="cert-item__dot"></div><div><p class="cert-item__name">Speed Reading Techniques</p><p class="cert-item__issuer">Mindvalley · Ene 2021</p></div></div>
-        <div class="cert-item"><div class="cert-item__dot"></div><div><p class="cert-item__name">Cybersecurity, Robotics &amp; App Creation</p><p class="cert-item__issuer">La Salle BCN · Ene 2015</p></div></div>
-        <div class="cert-item"><div class="cert-item__dot"></div><div><p class="cert-item__name">Scuba Diving License B1-E</p><p class="cert-item__issuer">CMAS · Mar 2019</p></div></div>
+        <div class="cert-item"><div class="cert-item__dot"></div><div><p class="cert-item__name" data-i18n="cert5_name">Neuro-linguistic Programming (NLP)</p><p class="cert-item__issuer" data-i18n="cert5_issuer">Mauricio Benoist · Jul 2020</p></div></div>
+        <div class="cert-item"><div class="cert-item__dot"></div><div><p class="cert-item__name" data-i18n="cert6_name">Entrepreneurial Mindset</p><p class="cert-item__issuer" data-i18n="cert6_issuer">Emprende Aprendiendo · Jul 2020</p></div></div>
+        <div class="cert-item"><div class="cert-item__dot"></div><div><p class="cert-item__name" data-i18n="cert7_name">Expansive Coaching</p><p class="cert-item__issuer" data-i18n="cert7_issuer">Mauricio Benoist · Dic 2020</p></div></div>
+        <div class="cert-item"><div class="cert-item__dot"></div><div><p class="cert-item__name" data-i18n="cert8_name">Speed Reading Techniques</p><p class="cert-item__issuer" data-i18n="cert8_issuer">Mindvalley · Ene 2021</p></div></div>
+        <div class="cert-item"><div class="cert-item__dot"></div><div><p class="cert-item__name" data-i18n="cert9_name">Cybersecurity, Robotics &amp; App Creation</p><p class="cert-item__issuer" data-i18n="cert9_issuer">La Salle BCN · Ene 2015</p></div></div>
+        <div class="cert-item"><div class="cert-item__dot"></div><div><p class="cert-item__name" data-i18n="cert10_name">Scuba Diving License B1-E</p><p class="cert-item__issuer" data-i18n="cert10_issuer">CMAS · Mar 2019</p></div></div>
       </div>
     </section>
 
@@ -1324,11 +1324,23 @@
         edu5_degree: 'Programa de emprendimiento para desarrollo de proyecto industrial.',
         edu6_degree: 'Curso de backend con Spring Boot aplicado a fintech.',
         label_projects: 'Proyectos',
+        proj1_title: 'Bitcoin Price Prediction',
+        proj1_tech:  'Python · LSTM · Machine Learning',
         proj1_desc: 'Red neuronal LSTM entrenada con datos reales de Bitcoin 2012–2019 para predecir precios futuros. Web app interactiva para ajustar hiperparámetros del modelo en tiempo real.',
+        proj2_title: 'Máquina de Secado Kombucha',
+        proj2_tech:  'Arduino · IoT · Firebase · WebApp',
         proj2_desc: 'Máquina completa para secar Scoby de Kombucha: electrónica diseñada desde cero, carcasa 3D, conexión Wi-Fi y control/monitorización remota vía webapp y Firebase.',
+        proj3_title: 'Coche Teledirigido y App',
+        proj3_tech:  'Arduino · MIT App Inventor · Bluetooth',
         proj3_desc: 'Coche de juguete reconvertido: electrónica basada en Arduino y app móvil propia para controlarlo por Bluetooth en tiempo real.',
+        proj4_title: 'GYM App',
+        proj4_tech:  'MIT App Inventor',
         proj4_desc: 'App de rutina de ejercicios personalizable con imágenes, temporizador y selección de repeticiones por ejercicio.',
+        proj5_title: 'MINDINK',
+        proj5_tech:  'EdTech · SantanderX Explorer',
         proj5_desc: 'Herramienta para estudiantes que elimina tareas redundantes y facilita la interiorización de conceptos. Proyecto finalizado en el programa Explorer Santander.',
+        proj6_title: 'Skate Eléctrico [En progreso]',
+        proj6_tech:  'STM32 · FOC · Mecatrónica · BLDC',
         proj6_desc: 'Diseño de un skate eléctrico con análisis mecánico y electrónico, cálculo de par, dimensionamiento de batería e implementación de control FOC en STM32 para motores BLDC.',
         label_languages: 'Idiomas',
         lang1_name: 'Catalán', lang1_level: 'Nativo',
@@ -1336,6 +1348,26 @@
         lang3_name: 'Inglés',  lang3_level: 'B2 — Cambridge FCE',
         lang4_name: 'Francés', lang4_level: 'B2 — DELF',
         label_certs: 'Certificaciones',
+        cert1_name:    'Certificación en SCADA',
+        cert1_issuer:  'CIM UPC · Abr 2023',
+        cert2_name:    'Certificación Avanzada en PLC',
+        cert2_issuer:  'CIM UPC · Mar 2023',
+        cert3_name:    'Desarrollo de Apps Android',
+        cert3_issuer:  'Eurecat Academy · May 2022',
+        cert4_name:    'SolidWorks Associate Diseño Mecánico',
+        cert4_issuer:  'SolidWorks ATC · Oct 2019',
+        cert5_name:    'Programación Neurolingüística (PNL)',
+        cert5_issuer:  'Mauricio Benoist · Jul 2020',
+        cert6_name:    'Mentalidad Emprendedora',
+        cert6_issuer:  'Emprende Aprendiendo · Jul 2020',
+        cert7_name:    'Expansive Coaching',
+        cert7_issuer:  'Mauricio Benoist · Dic 2020',
+        cert8_name:    'Técnicas de Lectura Rápida',
+        cert8_issuer:  'Mindvalley · Ene 2021',
+        cert9_name:    'Ciberseguridad, Robótica y Creación de Apps',
+        cert9_issuer:  'La Salle BCN · Ene 2015',
+        cert10_name:   'Licencia de Buceo B1-E',
+        cert10_issuer: 'CMAS · Mar 2019',
         footer_text: 'Lara Claramunt Serra · Firmware Engineer & Creadora de Proyectos · Barcelona',
       },
 
@@ -1388,11 +1420,24 @@
         edu5_degree: 'Curs de backend amb Spring Boot aplicat a fintech.',
         edu6_degree: 'Programa d’emprenedoria per al desenvolupament d’un projecte industrial.',
         label_projects: 'Projectes',
+        proj1_title: 'Bitcoin Price Prediction',
+        proj1_tech:  'Python · LSTM · Machine Learning',
         proj1_desc: 'Xarxa neuronal LSTM entrenada amb dades reals de Bitcoin 2012–2019 per predir preus futurs. Web app interactiva per ajustar hiperparàmetres del model en temps real.',
+        proj2_title: 'Màquina d\'Assecatge Kombucha',
+        proj2_tech:  'Arduino · IoT · Firebase · WebApp',
         proj2_desc: 'Màquina completa per assecar Scoby de Kombucha: electrònica dissenyada des de zero, carcassa 3D, connexió Wi-Fi i control/monitoratge remot via webapp i Firebase.',
+        proj3_title: 'Cotxe Teledirigit i App',
+        proj3_tech:  'Arduino · MIT App Inventor · Bluetooth',
         proj3_desc: 'Cotxe de joguina reconvertit: electrònica basada en Arduino i app mòbil pròpia per controlar-lo per Bluetooth en temps real.',
+        proj4_title: 'GYM App',
+        proj4_tech:  'MIT App Inventor',
         proj4_desc: 'App de rutina d\'exercicis personalitzable amb imatges, temporitzador i selecció de repeticions per exercici.',
+        proj5_title: 'MINDINK',
+        proj5_tech:  'EdTech · SantanderX Explorer',
         proj5_desc: 'Eina per a estudiants que elimina tasques redundants i facilita la interiorització de conceptes. Projecte finalitzat al programa Explorer Santander.',
+        proj6_title: 'Skate Elèctric [En curs]',
+        proj6_tech:  'STM32 · FOC · Mecatrònica · BLDC',
+        proj6_desc: 'Disseny d\'un skate elèctric amb anàlisi mecànica i electrònica, càlcul de parell, dimensionament de bateria i implementació de control FOC en STM32 per a motors BLDC.',
         proj6_desc: 'Disseny d’un skate elèctric amb anàlisi mecànica i electrònica, càlcul de parell, dimensionament de bateria i implementació de control FOC en STM32 per a motors BLDC.',        
         label_languages: 'Idiomes',
         lang1_name: 'Català',  lang1_level: 'Natiu',
@@ -1400,6 +1445,26 @@
         lang3_name: 'Anglès',  lang3_level: 'B2 — Cambridge FCE',
         lang4_name: 'Francès', lang4_level: 'B2 — DELF',
         label_certs: 'Certificacions',
+        cert1_name:    'Certificació en SCADA',
+        cert1_issuer:  'CIM UPC · Abr 2023',
+        cert2_name:    'Certificació Avançada en PLC',
+        cert2_issuer:  'CIM UPC · Mar 2023',
+        cert3_name:    'Desenvolupament d\'Apps Android',
+        cert3_issuer:  'Eurecat Academy · Mai 2022',
+        cert4_name:    'SolidWorks Associate Disseny Mecànic',
+        cert4_issuer:  'SolidWorks ATC · Oct 2019',
+        cert5_name:    'Programació Neurolingüística (PNL)',
+        cert5_issuer:  'Mauricio Benoist · Jul 2020',
+        cert6_name:    'Mentalitat Emprenedora',
+        cert6_issuer:  'Emprende Aprendiendo · Jul 2020',
+        cert7_name:    'Expansive Coaching',
+        cert7_issuer:  'Mauricio Benoist · Des 2020',
+        cert8_name:    'Tècniques de Lectura Ràpida',
+        cert8_issuer:  'Mindvalley · Gen 2021',
+        cert9_name:    'Ciberseguretat, Robòtica i Creació d\'Apps',
+        cert9_issuer:  'La Salle BCN · Gen 2015',
+        cert10_name:   'Llicència de Busseig B1-E',
+        cert10_issuer: 'CMAS · Mar 2019',
         footer_text: 'Lara Claramunt Serra · Enginyera de Firmware & Creadora de Projectes · Barcelona',
       },
 
@@ -1452,11 +1517,23 @@
         edu5_degree: 'Entrepreneurship program for industrial project development.',
         edu6_degree: 'Backend course with Spring Boot applied to fintech.',
         label_projects: 'Projects',
+        proj1_title: 'Bitcoin Price Prediction',
+        proj1_tech:  'Python · LSTM · Machine Learning',
         proj1_desc: 'LSTM neural network trained on real Bitcoin data (2012–2019) to predict future prices. Interactive web app to tune model hyperparameters in real time.',
+        proj2_title: 'Kombucha Drying Machine',
+        proj2_tech:  'Arduino · IoT · Firebase · WebApp',
         proj2_desc: 'Full Kombucha Scoby drying machine: electronics designed from scratch, 3D-printed enclosure, Wi-Fi connection, remote control and monitoring via webapp and Firebase.',
+        proj3_title: 'Remote Controlled Car & App',
+        proj3_tech:  'Arduino · MIT App Inventor · Bluetooth',
         proj3_desc: 'Repurposed toy car: Arduino-based electronics and custom mobile app to control it via Bluetooth in real time.',
+        proj4_title: 'GYM App',
+        proj4_tech:  'MIT App Inventor',
         proj4_desc: 'Customizable workout routine app with exercise images, timer and rep selection per exercise.',
+        proj5_title: 'MINDINK',
+        proj5_tech:  'EdTech · SantanderX Explorer',
         proj5_desc: 'Tool for students that removes redundant tasks and facilitates concept internalization. Completed within the Santander Explorer Programme.',
+        proj6_title: 'Electric Skateboard [On going]',
+        proj6_tech:  'STM32 · FOC · Mechatronics · BLDC',
         proj6_desc: 'Electric skateboard design with mechanical/electronic analysis, torque calculation, battery sizing, and FOC control implementation on STM32 for BLDC motors.',
         label_languages: 'Languages',
         lang1_name: 'Catalan',  lang1_level: 'Native',
@@ -1464,6 +1541,26 @@
         lang3_name: 'English',  lang3_level: 'B2 — Cambridge FCE',
         lang4_name: 'French',   lang4_level: 'B2 — DELF',
         label_certs: 'Certifications',
+        cert1_name:    'Certification in SCADA',
+        cert1_issuer:  'CIM UPC · Apr 2023',
+        cert2_name:    'Advanced PLC Certification',
+        cert2_issuer:  'CIM UPC · Mar 2023',
+        cert3_name:    'Android App Development',
+        cert3_issuer:  'Eurecat Academy · May 2022',
+        cert4_name:    'SolidWorks Associate Mechanical Design',
+        cert4_issuer:  'SolidWorks ATC · Oct 2019',
+        cert5_name:    'Neuro-linguistic Programming (NLP)',
+        cert5_issuer:  'Mauricio Benoist · Jul 2020',
+        cert6_name:    'Entrepreneurial Mindset',
+        cert6_issuer:  'Emprende Aprendiendo · Jul 2020',
+        cert7_name:    'Expansive Coaching',
+        cert7_issuer:  'Mauricio Benoist · Dec 2020',
+        cert8_name:    'Speed Reading Techniques',
+        cert8_issuer:  'Mindvalley · Jan 2021',
+        cert9_name:    'Cybersecurity, Robotics & App Creation',
+        cert9_issuer:  'La Salle BCN · Jan 2015',
+        cert10_name:   'Scuba Diving License B1-E',
+        cert10_issuer: 'CMAS · Mar 2019',
         footer_text: 'Lara Claramunt Serra · Firmware Engineer & Projects Creator · Barcelona',
       },
     };
