@@ -1867,37 +1867,30 @@
         if (section) sections.push({ id: sectionId, el: section, nav: item });
       });
 
-      // Calcular rangos de scroll para cada sección
+      // Calcular rangos de scroll para cada sección (proporcional al tamaño)
       function calculateRanges() {
         const viewportHeight = window.innerHeight;
         const documentHeight = document.documentElement.scrollHeight;
-        const maxScroll = documentHeight - viewportHeight;
+        const maxScroll = Math.max(0, documentHeight - viewportHeight);
 
-        // Calcular scrollY que centra cada sección
-        const scrollCenters = sections.map(s => {
-          const sectionTop = s.el.offsetTop;
-          const sectionHeight = s.el.offsetHeight;
-          let center = sectionTop - (viewportHeight / 2) + (sectionHeight / 2);
-          return Math.max(0, Math.min(center, maxScroll));
+        // Calcular altura total de todas las secciones
+        let totalHeight = 0;
+        sections.forEach(s => {
+          totalHeight += s.el.offsetHeight;
         });
 
-        // Calcular rangos (midpoints entre secciones)
+        // Asignar rangos proporcionales
+        let currentMin = 0;
         sectionRanges = sections.map((s, i) => {
-          let min, max;
+          const proportion = s.el.offsetHeight / totalHeight;
+          const rangeSize = proportion * maxScroll;
+          const min = currentMin;
+          const max = (i === sections.length - 1) ? maxScroll + 1 : currentMin + rangeSize;
+          const scrollCenter = (min + max) / 2;
           
-          if (i === 0) {
-            min = 0;
-          } else {
-            min = (scrollCenters[i - 1] + scrollCenters[i]) / 2;
-          }
+          currentMin = max;
           
-          if (i === sections.length - 1) {
-            max = maxScroll + 1; // +1 para incluir el máximo
-          } else {
-            max = (scrollCenters[i] + scrollCenters[i + 1]) / 2;
-          }
-          
-          return { id: s.id, min, max, nav: s.nav, scrollCenter: scrollCenters[i] };
+          return { id: s.id, min, max, nav: s.nav, scrollCenter: Math.min(scrollCenter, maxScroll) };
         });
       }
 
@@ -1915,10 +1908,16 @@
 
         // Encontrar sección activa según rangos
         let activeRange = sectionRanges[0];
-        for (const range of sectionRanges) {
-          if (scrollY >= range.min && scrollY < range.max) {
-            activeRange = range;
-            break;
+        
+        // Si scrollY excede el máximo (bounce móvil), usar última sección
+        if (scrollY >= sectionRanges[sectionRanges.length - 1].min) {
+          activeRange = sectionRanges[sectionRanges.length - 1];
+        } else {
+          for (const range of sectionRanges) {
+            if (scrollY >= range.min && scrollY < range.max) {
+              activeRange = range;
+              break;
+            }
           }
         }
 
