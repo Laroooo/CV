@@ -818,6 +818,28 @@
       .nav-visual__dots {
         display: none; /* Ocultar dots en móvil para simplificar */
       }
+
+      /* Móvil: animación horizontal (izquierda-derecha) */
+      .nav-visual__fill {
+        transform: scaleX(0);
+      }
+      .nav-visual__item.active .nav-visual__fill {
+        transform: scaleX(1);
+      }
+      /* Scroll DOWN: entrada desde izquierda, salida hacia derecha */
+      .nav-visual__item.enter-down .nav-visual__fill {
+        transform-origin: left;
+      }
+      .nav-visual__item.exit-down .nav-visual__fill {
+        transform-origin: right;
+      }
+      /* Scroll UP: entrada desde derecha, salida hacia izquierda */
+      .nav-visual__item.enter-up .nav-visual__fill {
+        transform-origin: right;
+      }
+      .nav-visual__item.exit-up .nav-visual__fill {
+        transform-origin: left;
+      }
     }
 
     /* ============================================================
