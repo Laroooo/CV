@@ -720,13 +720,12 @@
     /* Fill animado - simplificado */
     .nav-visual__fill {
       position: absolute;
-      top: 0;
       left: 0;
       right: 0;
       height: 0%;
       background: var(--clr-accent);
       z-index: 1;
-      transition: height 0.15s ease-out;
+      transition: height 0.15s ease-out, top 0s, bottom 0s;
     }
 
     /* Dots indicadores de items */
@@ -1882,9 +1881,31 @@
           if (isMobile()) {
             s.fill.style.width = fillPercent + '%';
             s.fill.style.height = '100%';
+            
+            // Dirección del fill en móvil
+            if (progress > PERCENTAGE_HEIGHT_MAX_FILL) {
+              // Saliendo: fill anclado a la derecha, se encoge hacia la derecha
+              s.fill.style.left = 'auto';
+              s.fill.style.right = '0';
+            } else {
+              // Entrando o en medio: fill desde la izquierda
+              s.fill.style.left = '0';
+              s.fill.style.right = 'auto';
+            }
           } else {
             s.fill.style.height = fillPercent + '%';
             s.fill.style.width = '100%';
+            
+            // Dirección del fill en desktop
+            if (progress > PERCENTAGE_HEIGHT_MAX_FILL) {
+              // Saliendo: fill anclado abajo, se encoge hacia abajo
+              s.fill.style.top = 'auto';
+              s.fill.style.bottom = '0';
+            } else {
+              // Entrando o en medio: fill desde arriba
+              s.fill.style.top = '0';
+              s.fill.style.bottom = 'auto';
+            }
           }
 
           // Actualizar clase active basado en si tiene fill > 50%
