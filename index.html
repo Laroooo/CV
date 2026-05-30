@@ -1953,18 +1953,34 @@
       }
       window.addEventListener('scroll', updateActiveSection, { passive: true });
 
-      // Click en nav-visual: centrar sección en pantalla
+      // Click en nav-visual: posicionar sección en pantalla
       navItems.forEach(item => {
         item.addEventListener('click', function(e) {
           e.preventDefault();
           const sectionId = this.dataset.section;
+          const section = sections.find(s => s.id === sectionId);
+          if (!section) return;
+
+          const viewportHeight = window.innerHeight;
+          const sectionHeight = section.el.offsetHeight;
+          const sectionTop = section.el.offsetTop;
+          const margin = 80; // Margen superior cuando no cabe
+
+          let scrollTo;
           
-          // Buscar el rango de esta sección para usar su scrollCenter
-          const range = sectionRanges.find(r => r.id === sectionId);
-          if (!range) return;
+          if (sectionHeight <= viewportHeight) {
+            // La sección cabe entera → centrar en pantalla
+            scrollTo = sectionTop - (viewportHeight / 2) + (sectionHeight / 2);
+          } else {
+            // La sección es muy grande → poner TOP arriba con margen
+            scrollTo = sectionTop - margin;
+          }
+
+          // Asegurar que no sea negativo
+          scrollTo = Math.max(0, scrollTo);
 
           window.scrollTo({
-            top: range.scrollCenter,
+            top: scrollTo,
             behavior: 'smooth'
           });
         });
