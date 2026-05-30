@@ -679,18 +679,17 @@
       /* Colores exactos */
       * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
  
-      /* Fuerza que SIEMPRE se imprima igual */
-      @page { 
-        size: A4 portrait; 
-        margin: 12mm 15mm 14mm 15mm;
-      }
+      /* Página A4 con márgenes cómodos */
+      @page { size: A4 portrait; margin: 12mm 15mm 14mm 15mm; }
 
-      /* Limita el ancho máximo para que quepa en A4 */
-      .page {
-        max-width: 100%;
-        width: 21cm;  /* ← Ancho exacto de A4 */
-        margin: 0 auto;
-        padding: 0 !important;
+      /*
+        FIX MÓVIL: Los navegadores móviles usan el viewport estrecho (~390px)
+        como base de zoom al imprimir, lo que hace que el contenido salga más
+        grande que en escritorio. Forzamos el ancho a 794px (A4 a 96dpi) para
+        que el motor de impresión calcule el mismo zoom que en escritorio.
+      */
+      html {
+        width: 794px !important;
       }
  
       /* Fuente base más pequeña para que todo quepa mejor */
