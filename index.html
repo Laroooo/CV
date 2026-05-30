@@ -1940,6 +1940,31 @@
         lastActiveId = sections[0].id;
       }
       window.addEventListener('scroll', updateActiveSection, { passive: true });
+
+      // Click en nav-visual: centrar sección en pantalla
+      navItems.forEach(item => {
+        item.addEventListener('click', function(e) {
+          e.preventDefault();
+          const sectionId = this.dataset.section;
+          const section = document.getElementById(sectionId);
+          if (!section) return;
+
+          const viewportHeight = window.innerHeight;
+          const sectionTop = section.offsetTop;
+          const sectionHeight = section.offsetHeight;
+
+          // Calcular scroll para centrar la sección
+          let scrollTo = sectionTop - (viewportHeight / 2) + (sectionHeight / 2);
+
+          // Asegurar que no sea negativo
+          scrollTo = Math.max(0, scrollTo);
+
+          window.scrollTo({
+            top: scrollTo,
+            behavior: 'smooth'
+          });
+        });
+      });
     })();
   </script>
 
