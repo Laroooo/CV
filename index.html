@@ -717,16 +717,33 @@
       transition: color var(--transition);
     }
 
-    /* Fill animado */
+    /* Fill animado con scaleY */
     .nav-visual__fill {
       position: absolute;
-      bottom: 0;
       left: 0;
       right: 0;
-      height: 0%;
+      top: 0;
+      bottom: 0;
       background: var(--clr-accent);
-      transition: height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      transform: scaleY(0);
+      transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
       z-index: 1;
+    }
+
+    /* Scroll DOWN: entrada desde arriba, salida hacia abajo */
+    .nav-visual__item.enter-down .nav-visual__fill {
+      transform-origin: top;
+    }
+    .nav-visual__item.exit-down .nav-visual__fill {
+      transform-origin: bottom;
+    }
+
+    /* Scroll UP: entrada desde abajo, salida hacia arriba */
+    .nav-visual__item.enter-up .nav-visual__fill {
+      transform-origin: bottom;
+    }
+    .nav-visual__item.exit-up .nav-visual__fill {
+      transform-origin: top;
     }
 
     /* Dots indicadores de items */
@@ -751,7 +768,7 @@
       background: var(--clr-accent-soft);
     }
     .nav-visual__item.active .nav-visual__fill {
-      height: 100%;
+      transform: scaleY(1);
     }
     .nav-visual__item.active .nav-visual__icon svg {
       color: #fff;
@@ -1818,6 +1835,8 @@
     (function() {
       const navItems = document.querySelectorAll('.nav-visual__item');
       const sections = [];
+      let lastScrollY = window.scrollY;
+      let lastActiveId = null;
 
       navItems.forEach(item => {
         const sectionId = item.dataset.section;
@@ -1825,24 +1844,80 @@
         if (section) sections.push({ id: sectionId, el: section, nav: item });
       });
 
-      function updateActiveSection() {
-        const scrollY = window.scrollY + window.innerHeight / 3;
+      function clearAnimClasses(item) {
+        item.classList.remove('enter-down', 'enter-up', 'exit-down', 'exit-up');
+      }
 
+      function updateActiveSection() {
+        const scrollY = window.scrollY;
+        const viewportHeight = window.innerHeight;
+        const documentHeight = document.documentElement.scrollHeight;
+        const viewportCenter = scrollY + viewportHeight / 2;
+
+        // Detectar dirección del scroll
+        const isScrollingDown = scrollY > lastScrollY;
+        const isScrollingUp = scrollY < lastScrollY;
+        lastScrollY = scrollY;
+
+        // Encontrar sección activa
         let activeSection = sections[0];
-        for (const s of sections) {
-          if (s.el.offsetTop <= scrollY) {
-            activeSection = s;
+
+        // Caso 1: Fondo absoluto → última sección
+        if (scrollY + viewportHeight >= documentHeight - 5) {
+          activeSection = sections[sections.length - 1];
+        }
+        // Caso 2: Cerca del final (~200px) → usar centro del viewport
+        else if (scrollY + viewportHeight >= documentHeight - 200) {
+          let closestSection = sections[0];
+          let closestDistance = Infinity;
+          for (const s of sections) {
+            const sectionCenter = s.el.offsetTop + s.el.offsetHeight / 2;
+            const distance = Math.abs(sectionCenter - viewportCenter);
+            if (distance < closestDistance) {
+              closestDistance = distance;
+              closestSection = s;
+            }
+          }
+          activeSection = closestSection;
+        }
+        // Caso 3: Normal → trigger point 1/3
+        else {
+          const triggerPoint = scrollY + viewportHeight / 3;
+          for (const s of sections) {
+            if (s.el.offsetTop <= triggerPoint) {
+              activeSection = s;
+            }
           }
         }
 
-        navItems.forEach(item => item.classList.remove('active'));
-        if (activeSection) {
-          activeSection.nav.classList.add('active');
+        const newActiveId = activeSection ? activeSection.id : null;
+
+        // Solo actualizar si cambió la sección activa
+        if (newActiveId !== lastActiveId) {
+          navItems.forEach(item => {
+            const itemId = item.dataset.section;
+            clearAnimClasses(item);
+
+            if (itemId === newActiveId) {
+              // Sección que ENTRA
+              item.classList.add('active');
+              item.classList.add(isScrollingDown || !isScrollingUp ? 'enter-down' : 'enter-up');
+            } else if (itemId === lastActiveId) {
+              // Sección que SALE
+              item.classList.remove('active');
+              item.classList.add(isScrollingDown || !isScrollingUp ? 'exit-down' : 'exit-up');
+            }
+          });
+          lastActiveId = newActiveId;
         }
       }
 
+      // Init
+      if (sections.length > 0) {
+        sections[0].nav.classList.add('active', 'enter-down');
+        lastActiveId = sections[0].id;
+      }
       window.addEventListener('scroll', updateActiveSection, { passive: true });
-      updateActiveSection(); // Init
     })();
   </script>
 
